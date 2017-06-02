@@ -1,0 +1,5 @@
+C:\Users\kenneth\OneDrive\Dokumenter\Visual Studio 2013\Projects\Bank\BankClassLib\bin\Debug\BankClassLib.dll
+C:\Users\kenneth\OneDrive\Dokumenter\Visual Studio 2013\Projects\Bank\BankClassLib\bin\Debug\BankClassLib.pdb
+C:\Users\kenneth\OneDrive\Dokumenter\Visual Studio 2013\Projects\Bank\BankClassLib\obj\Debug\BankClassLib.dll
+C:\Users\kenneth\OneDrive\Dokumenter\Visual Studio 2013\Projects\Bank\BankClassLib\obj\Debug\BankClassLib.pdb
+C:\Users\kenneth\OneDrive\Dokumenter\Visual Studio 2013\Projects\Bank\BankClassLib\obj\Debug\BankClassLib.csprojResolveAssemblyReference.cache
