@@ -54,6 +54,10 @@
     <Compile Include="Exceptions\InvalidAccountNameException.cs" />
     <Compile Include="Exceptions\NegativeBalanceException.cs" />
     <Compile Include="Interfaces\IAccount.cs" />
+    <Compile Include="Migrations\201706081153492_Init.cs" />
+    <Compile Include="Migrations\201706081153492_Init.Designer.cs">
+      <DependentUpon>201706081153492_Init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -77,6 +81,10 @@
       <Name>BankClassLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706081153492_Init.resx">
+      <DependentUpon>201706081153492_Init.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
