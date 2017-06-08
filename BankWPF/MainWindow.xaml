@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="300" Width="300">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button Name="ShowAccountsButton" Content="Accounts" Grid.Row="0"/>
+        <Button Name="ShowCustomersButton" Content="Customers" Grid.Row="1"/>
+        <Button Name="CreateTransactionButton" Content="Create a new transaction" Grid.Row="2"/>
         
     </Grid>
 </Window>
