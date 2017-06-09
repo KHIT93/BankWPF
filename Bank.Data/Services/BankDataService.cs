@@ -10,16 +10,34 @@ using Bank.Data.Exceptions;
 
 namespace Bank.Data.Services
 {
-    class BankDataService : IBankService
+    public class BankDataService : IBankService
     {
         protected string _bankName;
         protected IRepository<Account> _accounts = new AccountRepository();
         protected IRepository<Customer> _customers = new CustomerRepository();
         protected IRepository<Transaction> _transactions = new TransactionRepository();
+        public BankDataService()
+        {
+
+        }
         public BankDataService(string bankName)
         {
             this._bankName = bankName;
             
+        }
+
+        public void SetBankName(string name)
+        {
+            this._bankName = name;
+        }
+
+        private static BankDataService _instance;
+        public static BankDataService Instance
+        {
+            get
+            {
+                return _instance ?? (_instance = new BankDataService());
+            }
         }
 
         public string BankName

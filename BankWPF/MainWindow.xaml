@@ -3,17 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:BankWPF.ViewModels"
         xmlns:local="clr-namespace:BankWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="{Binding BankName}" Height="500" Width="800"
+        DataContext="{DynamicResource MainWindowViewModel}">
+    <Window.Resources>
+        <vm:MainWindowViewModel x:Key="MainWindowViewModel"/>
+    </Window.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Left">
-            <Button Name="ShowAccountsButton" Content="Accounts"/>
+        <StackPanel DockPanel.Dock="Left" Margin="10,0,10,0" Name="MenuStackPanel">
+            <Button Name="ShowAccountsButton" Content="Accounts" Click="ShowAccountsButton_Click"/>
             <Button Name="ShowCustomersButton" Content="Customers"/>
             <Button Name="CreateTransactionButton" Content="Create a new transaction"/>
         </StackPanel>
-        <StackPanel>
-            <TextBlock>Content here</TextBlock>
+        <StackPanel Name="ContentStackPanel">
+            <ContentControl Content="{Binding CurrentControl, Mode=OneWay}" Name="UserControlContent"/>
         </StackPanel>
     </DockPanel>
 </Window>

@@ -65,11 +65,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UserControls\AccountsMainView.xaml.cs">
+      <DependentUpon>AccountsMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AccountMainViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AccountsMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,14 +117,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\BankClassLib\BankClassLib.csproj">
-      <Project>{de69b517-857d-492a-a502-8d459d9bf092}</Project>
-      <Name>BankClassLib</Name>
+    <ProjectReference Include="..\Bank.Data\Bank.Data.csproj">
+      <Project>{38fb3e1d-78ba-445f-a4d6-2cc3906170eb}</Project>
+      <Name>Bank.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,4 @@
-﻿using BankWPF.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BankWPF
+namespace BankWPF.UserControls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AccountsMainView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AccountsMainView : UserControl
     {
-        public MainWindow()
+        public AccountsMainView()
         {
             InitializeComponent();
-        }
-
-        private void ShowAccountsButton_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindowViewModel)this.DataContext).SetCurrentUserControl(new UserControls.AccountsMainView());
         }
     }
 }

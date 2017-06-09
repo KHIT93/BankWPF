@@ -5,6 +5,5 @@ C:\Users\kenneth\OneDrive\Dokumenter\Visual Studio 2013\Projects\Bank\BankClassL
 C:\Users\kenneth\OneDrive\Dokumenter\Visual Studio 2013\Projects\Bank\BankClassLib\obj\Debug\BankClassLib.csprojResolveAssemblyReference.cache
 C:\Users\Kenneth Hansen\documents\visual studio 2017\Projects\BankWPF\BankClassLib\bin\Debug\BankClassLib.dll
 C:\Users\Kenneth Hansen\documents\visual studio 2017\Projects\BankWPF\BankClassLib\bin\Debug\BankClassLib.pdb
-C:\Users\Kenneth Hansen\documents\visual studio 2017\Projects\BankWPF\BankClassLib\obj\Debug\BankClassLib.csprojResolveAssemblyReference.cache
 C:\Users\Kenneth Hansen\documents\visual studio 2017\Projects\BankWPF\BankClassLib\obj\Debug\BankClassLib.dll
 C:\Users\Kenneth Hansen\documents\visual studio 2017\Projects\BankWPF\BankClassLib\obj\Debug\BankClassLib.pdb
