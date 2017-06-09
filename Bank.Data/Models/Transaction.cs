@@ -9,10 +9,22 @@ namespace Bank.Data.Models
 {
     public class Transaction
     {
+        public Transaction()
+        {
+
+        }
         public Transaction(Account account, double amount)
         {
             this.Account = account;
             this.Amount = amount;
+            this.Timstamp = DateTime.Now;
+        }
+
+        public Transaction(Account account, double amount, string description)
+        {
+            this.Account = account;
+            this.Amount = amount;
+            this.Description = description;
             this.Timstamp = DateTime.Now;
         }
 
@@ -28,5 +40,7 @@ namespace Bank.Data.Models
         [Display(Name = "Transaction Time")]
         [DataType(DataType.DateTime)]
         public DateTime Timstamp { get; set; }
+
+        public String Description { get; set; }
     }
 }

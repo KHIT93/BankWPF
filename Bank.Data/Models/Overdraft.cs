@@ -9,12 +9,16 @@ namespace Bank.Data.Models
 {
     public class Overdraft : Account
     {
-        public Overdraft(string name, int accountNumber)
+        public Overdraft()
+        {
+
+        }
+        public Overdraft(string name)
         {
             this.Name = name;
             this._balance= 0;
         }
-        public Overdraft(string name, int accountNumber, double balance)
+        public Overdraft(string name, double balance)
         {
             this.Name = name;
             this._balance = balance;

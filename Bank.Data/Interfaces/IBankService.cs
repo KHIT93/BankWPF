@@ -9,10 +9,13 @@ namespace Bank.Data.Interfaces
 {
     public interface IBankService
     {
-        String CreateAccount(string name, string accountType, double balance = 0);
-        string DeleteAccount(int accountNumber);
-        string Transaction(double amount, int accountNumber);
+        String CreateAccount(Customer customer, string name, string accountType, double balance = 0);
+        String DeleteAccount(int accountNumber);
+        String Transaction(double amount, int accountNumber);
+        Account GetAccount(int AccountId);
         ICollection<Account> GetAccounts();
-        string AddInterest();
+        String AddInterest();
+        Customer GetCustomer(int Id);
+        ICollection<Customer> GetCustomers();
     }
 }

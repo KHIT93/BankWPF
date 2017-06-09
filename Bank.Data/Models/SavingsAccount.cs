@@ -8,12 +8,16 @@ namespace Bank.Data.Models
 {
     public class SavingsAccount : Account
     {
-        public SavingsAccount(string name, int accountNumber)
+        public SavingsAccount()
+        {
+
+        }
+        public SavingsAccount(string name)
         {
             this.Name = name;
             this._balance = 0;
         }
-        public SavingsAccount(string name, int accountNumber, double balance)
+        public SavingsAccount(string name, double balance)
         {
             this.Name = name;
             this._balance = balance;

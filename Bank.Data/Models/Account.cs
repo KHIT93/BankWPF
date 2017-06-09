@@ -44,5 +44,11 @@ namespace Bank.Data.Models
         public virtual ICollection<Transaction> Transactions { get; set; }
 
         public abstract void AddInterest();
+
+        public double CalculateBalance()
+        {
+            //this.Balance = this.Transactions.Sum(o => o.Amount);
+            return this.Transactions.Sum(o => o.Amount);
+        }
     }
 }

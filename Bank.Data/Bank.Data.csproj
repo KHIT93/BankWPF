@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201706081153492_Init.Designer.cs">
       <DependentUpon>201706081153492_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706090955051_AddDescriptionToTransactions.cs" />
+    <Compile Include="Migrations\201706090955051_AddDescriptionToTransactions.Designer.cs">
+      <DependentUpon>201706090955051_AddDescriptionToTransactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -65,7 +69,9 @@
     <Compile Include="Models\SalaryAccount.cs" />
     <Compile Include="Models\SavingsAccount.cs" />
     <Compile Include="Models\Transaction.cs" />
-    <Compile Include="Repositories\BankRepository.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Services\BankDataService.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IBankService.cs" />
@@ -84,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706081153492_Init.resx">
       <DependentUpon>201706081153492_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706090955051_AddDescriptionToTransactions.resx">
+      <DependentUpon>201706090955051_AddDescriptionToTransactions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
