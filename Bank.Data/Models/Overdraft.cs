@@ -36,6 +36,15 @@ namespace Bank.Data.Models
                 }
             }
         }
+
+        public override string AccountType
+        {
+            get
+            {
+                return "Overdraft";
+            }
+        }
+
         public override void AddInterest()
         {
             this._balance *= (this._balance < 0) ? 1.05 : 1.005;

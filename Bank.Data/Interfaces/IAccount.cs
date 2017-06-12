@@ -14,6 +14,7 @@ namespace Bank.Data.Interfaces
         Double Balance { get; set; }
         Customer Customer { get; set; }
         ICollection<Transaction> Transactions { get; set; }
+        String AccountType { get; }
         void AddInterest();
     }
 }

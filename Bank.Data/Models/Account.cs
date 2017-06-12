@@ -44,6 +44,7 @@ namespace Bank.Data.Models
         public virtual ICollection<Transaction> Transactions { get; set; }
 
         public abstract void AddInterest();
+        public abstract string AccountType { get; }
 
         public double CalculateBalance()
         {

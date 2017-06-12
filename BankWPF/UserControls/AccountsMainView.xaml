@@ -7,11 +7,33 @@
              xmlns:local="clr-namespace:BankWPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             DataContext="{DynamicResource AccountMainViewModel}">
+             >
     <UserControl.Resources>
         <vm:AccountMainViewModel x:Key="AccountMainViewModel"/>
     </UserControl.Resources>
     <Grid>
-        <TextBlock>Account management</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">Account management</TextBlock>
+        <ListView Grid.Row="1" Grid.ColumnSpan="4" x:Name="AccountsListView" ItemsSource="{Binding Accounts, Mode=OneWay}" SelectedItem="{Binding SelectedAccount}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="2" Grid.Column="0" Name="CreateNewAccountButton" Content="Create new account" Click="CreateNewAccountButton_Click"/>
+        <Button IsEnabled="{Binding AccountIsSelected}" Grid.Row="2" Grid.Column="1" Name="ShowAccountHistoryButton" Content="Show account history" Click="ShowAccountHistoryButton_Click"/>
+        <Button IsEnabled="{Binding AccountIsSelected}" Grid.Row="2" Grid.Column="2" Name="EditAccountButton" Content="Edit account" />
+        <Button IsEnabled="{Binding AccountIsSelected}" Grid.Row="2" Grid.Column="3" Name="DeleteAccountButton" Content="Delete account" />
     </Grid>
 </UserControl>

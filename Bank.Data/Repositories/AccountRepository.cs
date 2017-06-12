@@ -57,19 +57,35 @@ namespace Bank.Data.Repositories
             return success;
         }
 
-        public Account Get(int Id)
+        public Account Get(int Id, string include)
         {
             using (var context = new BankDatabaseContext())
             {
-                return context.Accounts.Find(Id);
+                return (include == null) ? context.Accounts.Find(Id) : context.Accounts.Where(a => a.AccountId == Id).Include(include).First();
             }
         }
 
-        public async Task<Account> GetAsync(int Id)
+        public Account GetWithAll(int Id)
         {
             using (var context = new BankDatabaseContext())
             {
-                return await context.Accounts.FindAsync(Id);
+                return context.Accounts.Where(a => a.AccountId == Id).Include("Customer").Include("Transactions").First();
+            }
+        }
+
+        public async Task<Account> GetAsync(int Id, string include)
+        {
+            using (var context = new BankDatabaseContext())
+            {
+                return await ((include == null) ? context.Accounts.FindAsync(Id) : context.Accounts.Where(a => a.AccountId == Id).Include(include).FirstAsync());
+            }
+        }
+
+        public async Task<Account> GetWithAllAsync(int Id)
+        {
+            using (var context = new BankDatabaseContext())
+            {
+                return await context.Accounts.Where(a => a.AccountId == Id).Include("Customer").Include("Transactions").FirstAsync();
             }
         }
 

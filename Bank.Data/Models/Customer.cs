@@ -14,6 +14,13 @@ namespace Bank.Data.Models
         public string CompanyName { get; set; }
         public string VATNo { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return $"{this.FirstName} {this.LastName}";
+            }
+        }
 
     }
 }

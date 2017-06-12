@@ -26,5 +26,13 @@ namespace Bank.Data.Models
         {
             this.Balance *= 1.005;
         }
+
+        public override string AccountType
+        {
+            get
+            {
+                return "Salary Account";
+            }
+        }
     }
 }

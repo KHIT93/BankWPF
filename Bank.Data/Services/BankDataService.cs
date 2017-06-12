@@ -12,6 +12,7 @@ namespace Bank.Data.Services
 {
     public class BankDataService : IBankService
     {
+        private static BankDataService _instance;
         protected string _bankName;
         protected IRepository<Account> _accounts = new AccountRepository();
         protected IRepository<Customer> _customers = new CustomerRepository();
@@ -31,7 +32,6 @@ namespace Bank.Data.Services
             this._bankName = name;
         }
 
-        private static BankDataService _instance;
         public static BankDataService Instance
         {
             get
@@ -80,12 +80,17 @@ namespace Bank.Data.Services
 
         public string DeleteAccount(int accountNumber)
         {
-            return this._accounts.Delete(this.GetAccount(accountNumber)).ToString();
+            return this._accounts.Delete(this.GetAccount(accountNumber, false)).ToString();
         }
 
-        public Account GetAccount(int AccountId)
+        public Account GetAccount(int AccountId, bool GetAllRelationships)
         {
-            return this._accounts.Get(AccountId);
+            return (GetAllRelationships == true) ? this._accounts.GetWithAll(AccountId) : this._accounts.Get(AccountId, null);
+        }
+
+        public Account GetAccountWithCustomer(int Id)
+        {
+            return this._accounts.Get(Id, "Customer");
         }
 
         public ICollection<Account> GetAccounts()
@@ -93,9 +98,9 @@ namespace Bank.Data.Services
             return this._accounts.GetAll();
         }
 
-        public Customer GetCustomer(int Id)
+        public Customer GetCustomer(int Id, bool GetAllRelationships)
         {
-            return this._customers.Get(Id);
+            return (GetAllRelationships == true) ? this._customers.GetWithAll(Id) : this._customers.Get(Id, null);
         }
 
         public ICollection<Customer> GetCustomers()
@@ -103,9 +108,14 @@ namespace Bank.Data.Services
             return this._customers.GetAll();
         }
 
+        public async Task<ICollection<Customer>> GetCustomersAsync()
+        {
+            return await Task.Run(() => this.GetCustomers());
+        }
+
         public string Transaction(double amount, int accountNumber)
         {
-            return this._transactions.Create(new Transaction(this.GetAccount(accountNumber), amount)).ToString();
+            return this._transactions.Create(new Transaction(this.GetAccount(accountNumber, false), amount)).ToString();
         }
     }
 }

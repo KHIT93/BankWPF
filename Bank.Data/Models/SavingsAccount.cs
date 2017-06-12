@@ -37,5 +37,13 @@ namespace Bank.Data.Models
                 this.Balance *= 1.03;
             }
         }
+
+        public override string AccountType
+        {
+            get
+            {
+                return "Savings Account";
+            }
+        }
     }
 }

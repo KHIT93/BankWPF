@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:BankWPF.ViewModels"
         xmlns:local="clr-namespace:BankWPF"
         mc:Ignorable="d"
-        Title="{Binding BankName}" Height="500" Width="800"
+        Title="{Binding BankName}" Height="600" Width="1000"
         DataContext="{DynamicResource MainWindowViewModel}">
     <Window.Resources>
         <vm:MainWindowViewModel x:Key="MainWindowViewModel"/>
@@ -17,8 +17,6 @@
             <Button Name="ShowCustomersButton" Content="Customers"/>
             <Button Name="CreateTransactionButton" Content="Create a new transaction"/>
         </StackPanel>
-        <StackPanel Name="ContentStackPanel">
-            <ContentControl Content="{Binding CurrentControl, Mode=OneWay}" Name="UserControlContent"/>
-        </StackPanel>
+        <StackPanel Name="ContentStackPanel"/>
     </DockPanel>
 </Window>

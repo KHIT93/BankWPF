@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Bank.Data.Services;
+using BankWPF.ViewModels;
+using BankWPF.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,36 @@ namespace BankWPF.UserControls
     /// </summary>
     public partial class AccountsMainView : UserControl
     {
+        protected AccountMainViewModel vm;
         public AccountsMainView()
         {
             InitializeComponent();
+            this.vm = new AccountMainViewModel();
+            this.DataContext = this.vm;
+            Task.Run(() => (this.vm.CollectDataAsync()));
+        }
+
+        private void CreateNewAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((new CreateAccountWindow()).ShowDialog() == true)
+            {
+                Task.Run(() => this.vm.CollectDataAsync());
+            }
+        }
+
+        private void ShowAccountHistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            (new ShowAccountDetailsWindow
+                (
+                    new AccountDetailsViewModel
+                    (
+                        BankDataService.Instance.GetAccount
+                        (
+                            this.vm.SelectedAccount.AccountId, true
+                        )
+                    )
+                )
+            ).Show();
         }
     }
 }

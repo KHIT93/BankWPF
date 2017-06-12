@@ -12,10 +12,10 @@ namespace Bank.Data.Interfaces
         String CreateAccount(Customer customer, string name, string accountType, double balance = 0);
         String DeleteAccount(int accountNumber);
         String Transaction(double amount, int accountNumber);
-        Account GetAccount(int AccountId);
+        Account GetAccount(int AccountId, bool GetAllRelationships);
         ICollection<Account> GetAccounts();
         String AddInterest();
-        Customer GetCustomer(int Id);
+        Customer GetCustomer(int Id, bool GetAllRelationships);
         ICollection<Customer> GetCustomers();
     }
 }
