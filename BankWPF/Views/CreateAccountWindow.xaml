@@ -31,7 +31,7 @@
             <Label Name="NameLabel" Grid.Row="0" Grid.Column="0" Content="Account Name"/>
             <TextBox Text="{Binding Name, Mode=TwoWay}" Name="NameTextBox" Grid.Row="0" Grid.Column="1" Height="20" VerticalAlignment="Top"/>
             <Label Name="CustomerLabel" Grid.Row="1" Grid.Column="0" Content="Choose customer" VerticalAlignment="Top"/>
-            <ComboBox Name="CustomerComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Customers, Mode=OneWay}" Height="20" VerticalAlignment="Top">
+            <ComboBox Name="CustomerComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Customers, Mode=OneWay}" SelectedValue="{Binding Customer, Mode=TwoWay}" Height="20" VerticalAlignment="Top">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding FullName}"/>

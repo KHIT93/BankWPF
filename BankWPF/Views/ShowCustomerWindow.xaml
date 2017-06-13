@@ -1,0 +1,34 @@
+﻿<Window x:Class="BankWPF.Views.ShowCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankWPF.Views"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle}" Height="500" Width="600">
+    <ScrollViewer>
+        <StackPanel>
+            <WrapPanel>
+                <Label Content="Account owner: "/>
+                <Label Content="{Binding FullName}"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Company: "/>
+                <Label Content="{Binding CompanyName}"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="VAT Number: "/>
+                <Label Content="{Binding VATNo}"/>
+            </WrapPanel>
+            <Label Content="Accounts"/>
+            <DataGrid ItemsSource="{Binding Accounts}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="ID" Header="ID" Binding="{Binding Path=AccountId}"/>
+                    <DataGridTextColumn x:Name="Name" Header="Name" Binding="{Binding Path=Name}"/>
+                    <DataGridTextColumn x:Name="AccountType" Header="Account type" Binding="{Binding Path=AccountType}"/>
+                    <DataGridTextColumn x:Name="Balance" Header="Balance" Binding="{Binding Path=Balance}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

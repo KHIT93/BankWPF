@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BankWPF.Views;
 
 namespace BankWPF
 {
@@ -30,6 +31,17 @@ namespace BankWPF
         {
             this.ContentStackPanel.Children.Clear();
             this.ContentStackPanel.Children.Add(new AccountsMainView());
+        }
+
+        private void CreateTransactionButton_Click(object sender, RoutedEventArgs e)
+        {
+            (new CreateRawTransactionWindow()).ShowDialog();
+        }
+
+        private void ShowCustomersButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ContentStackPanel.Children.Clear();
+            this.ContentStackPanel.Children.Add(new CustomersMainWindow());
         }
     }
 }

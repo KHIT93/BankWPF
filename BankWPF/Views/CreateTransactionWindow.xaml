@@ -1,0 +1,44 @@
+﻿<Window x:Class="BankWPF.Views.CreateTransactionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankWPF.Views"
+        mc:Ignorable="d"
+        Title="Perform new transaction" Height="300" Width="300">
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Create a button that allows the user to create the account by either clicking the button or just pressing Enter on the keyboard -->
+            <Button Content="Create" Grid.Column="0" Name="CreateNewTransactionButton" IsDefault="True" Width="75" VerticalAlignment="Bottom" Click="CreateNewTransactionButton_Click"/>
+            <!-- Create a button to allow the user to cancel the creation and send a response, indicating ths, to the object that called ShowDialog() -->
+            <Button Content="Cancel" Grid.Column="1" Name="CancelCreateNewTransactionButton" IsCancel="True" Width="75" VerticalAlignment="Bottom"/>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Name="DescriptionLabel" Grid.Row="0" Grid.Column="0" Content="Description" ToolTip="Give a description so that you can identify this transaction in the account history"/>
+            <TextBox Text="{Binding Description, Mode=TwoWay}" Name="NameTextBox" Grid.Row="0" Grid.Column="1" Height="20" VerticalAlignment="Top"/>
+            <Label Name="CustomerLabel" Grid.Row="1" Grid.Column="0" Content="Choose customer" VerticalAlignment="Top"/>
+            <Label Name="SelectedCustomerLabel" Grid.Row="1" Grid.Column="1" Content="{Binding Customer.FullName}" VerticalAlignment="Top"/>
+
+            <Label Name="AccountLabel" Grid.Row="2" Grid.Column="0" Content="Choose account" VerticalAlignment="Top"/>
+            <Label Name="SelectedAccountLabel" Grid.Row="2" Grid.Column="1" Content="{Binding Account.Name}" VerticalAlignment="Top"/>
+
+            <Label Name="AmountLabel" Grid.Row="3" Grid.Column="0" Content="Amount" VerticalAlignment="Top"/>
+            <TextBox Name="AmountTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding Amount, Mode=TwoWay}" VerticalAlignment="Top" Height="20"/>
+        </Grid>
+    </DockPanel>
+</Window>

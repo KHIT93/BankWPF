@@ -1,4 +1,5 @@
-﻿using BankWPF.ViewModels;
+﻿using Bank.Data.Services;
+using BankWPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,38 @@ namespace BankWPF.Views
             InitializeComponent();
             this.vm = vm;
             this.DataContext = this.vm;
+        }
+
+        private void DepositTransactionMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if((new CreateTransactionWindow
+                (
+                    new CreateTransactionViewModel
+                    (
+                        this.vm.Customer,
+                        BankDataService.Instance.GetAccount(this.vm.AccountId, false)
+                    )
+                )
+                .ShowDialog() == true))
+            {
+                this.vm.RefreshModel();
+            }
+        }
+
+        private void WithdrawTransactionMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if ((new CreateTransactionWindow
+                (
+                    new CreateWithdrawTransactionViewModel
+                    (
+                        this.vm.Customer,
+                        BankDataService.Instance.GetAccount(this.vm.AccountId, false)
+                    )
+                )
+                .ShowDialog() == true))
+            {
+                this.vm.RefreshModel();
+            }
         }
     }
 }

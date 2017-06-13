@@ -33,23 +33,27 @@ namespace Bank.Data.Repositories
             }
         }
 
-        public bool Delete(Account entity)
+        public bool Delete(int Id)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
             {
+                Account entity = context.Accounts.Find(Id);
+                context.Transactions.RemoveRange(entity.Transactions);
                 context.Accounts.Remove(entity);
-                context.SaveChangesAsync();
+                context.SaveChanges();
                 success = true;
             }
             return success;
         }
 
-        public async Task<bool> DeleteAsync(Account entity)
+        public async Task<bool> DeleteAsync(int Id)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
             {
+                Account entity = await context.Accounts.FindAsync(Id);
+                context.Transactions.RemoveRange(entity.Transactions);
                 context.Accounts.Remove(entity);
                 int x = await context.SaveChangesAsync();
                 success = (x > 0) ? true : false;
@@ -124,6 +128,17 @@ namespace Bank.Data.Repositories
                 context.Entry(entity).State = EntityState.Modified;
                 int x = await context.SaveChangesAsync();
                 return entity;
+            }
+        }
+
+        public void CalculateBalanceForAccount(int accountId)
+        {
+            using (var context = new BankDatabaseContext())
+            {
+                Account entity = context.Accounts.Find(accountId);
+                entity.CalculateBalance();
+                context.Entry(entity).State = EntityState.Modified;
+                context.SaveChanges();
             }
         }
     }

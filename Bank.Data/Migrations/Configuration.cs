@@ -77,6 +77,7 @@ namespace Bank.Data.Migrations
                 #endregion
             );
             context.SaveChanges();
+            Bank.Data.Services.BankDataService.Instance.CalculateBalance();
         }
     }
 }

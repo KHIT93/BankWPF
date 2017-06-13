@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="BankWPF.UserControls.CustomersMainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BankWPF.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">Account management</TextBlock>
+            <ListView Grid.Row="1" Grid.ColumnSpan="4" x:Name="CustomersListView" ItemsSource="{Binding Customers, Mode=OneWay}" SelectedItem="{Binding SelectedCustomer}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding FullNameWithCompany}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Grid.Row="2" Grid.Column="0" Name="CreateNewCustomerButton" Content="Create new customer" Click="CreateNewCustomerButton_Click"/>
+            <Button IsEnabled="{Binding CustomerIsSelected}" Grid.Row="2" Grid.Column="1" Name="ShowAccountHistoryButton" Content="Show customer information" Click="ShowCustomerButton_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>

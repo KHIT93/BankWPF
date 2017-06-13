@@ -11,12 +11,14 @@
     <Window.Resources>
         <vm:MainWindowViewModel x:Key="MainWindowViewModel"/>
     </Window.Resources>
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Left" Margin="10,0,10,0" Name="MenuStackPanel">
-            <Button Name="ShowAccountsButton" Content="Accounts" Click="ShowAccountsButton_Click"/>
-            <Button Name="ShowCustomersButton" Content="Customers"/>
-            <Button Name="CreateTransactionButton" Content="Create a new transaction"/>
-        </StackPanel>
-        <StackPanel Name="ContentStackPanel"/>
-    </DockPanel>
+    <ScrollViewer>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left" Margin="10,0,10,0" Name="MenuStackPanel">
+                <Button Name="ShowAccountsButton" Content="Accounts" Click="ShowAccountsButton_Click"/>
+                <Button Name="ShowCustomersButton" Content="Customers" Click="ShowCustomersButton_Click"/>
+                <Button Name="CreateTransactionButton" Content="Create a new transaction" Click="CreateTransactionButton_Click"/>
+            </StackPanel>
+            <StackPanel Name="ContentStackPanel"/>
+        </DockPanel>
+    </ScrollViewer>
 </Window>

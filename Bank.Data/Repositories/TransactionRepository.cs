@@ -1,6 +1,7 @@
 ﻿using Bank.Data.Context;
 using Bank.Data.Interfaces;
 using Bank.Data.Models;
+using Bank.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,8 +17,10 @@ namespace Bank.Data.Repositories
         {
             using (var context = new BankDatabaseContext())
             {
+                Account account = context.Accounts.Find(entity.Account.AccountId);
+                entity.Account = account;
                 context.Transactions.Add(entity);
-                int x = context.SaveChanges();
+                context.SaveChanges();
                 return entity;
             }
 
@@ -27,17 +30,21 @@ namespace Bank.Data.Repositories
         {
             using (var context = new BankDatabaseContext())
             {
+                Account account = context.Accounts.Find(entity.Account.AccountId);
+                entity.Account = account;
                 context.Transactions.Add(entity);
                 int x = await context.SaveChangesAsync();
+
                 return entity;
             }
         }
 
-        public bool Delete(Transaction entity)
+        public bool Delete(int Id)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
             {
+                Transaction entity = context.Transactions.Find(Id);
                 context.Transactions.Remove(entity);
                 context.SaveChangesAsync();
                 success = true;
@@ -45,11 +52,12 @@ namespace Bank.Data.Repositories
             return success;
         }
 
-        public async Task<bool> DeleteAsync(Transaction entity)
+        public async Task<bool> DeleteAsync(int Id)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
             {
+                Transaction entity = await context.Transactions.FindAsync(Id);
                 context.Transactions.Remove(entity);
                 int x = await context.SaveChangesAsync();
                 success = (x > 0) ? true : false;
@@ -125,6 +133,11 @@ namespace Bank.Data.Repositories
                 int x = await context.SaveChangesAsync();
                 return entity;
             }
+        }
+
+        public void CalculateBalanceForAccount(int accountId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

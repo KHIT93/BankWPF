@@ -46,10 +46,10 @@ namespace Bank.Data.Models
         public abstract void AddInterest();
         public abstract string AccountType { get; }
 
-        public double CalculateBalance()
+        public void CalculateBalance()
         {
-            //this.Balance = this.Transactions.Sum(o => o.Amount);
-            return this.Transactions.Sum(o => o.Amount);
+            this.Balance = this.Transactions.Sum(o => o.Amount);
+            //return this.Transactions.Sum(o => o.Amount);
         }
     }
 }

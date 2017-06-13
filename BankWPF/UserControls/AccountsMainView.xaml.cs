@@ -54,5 +54,14 @@ namespace BankWPF.UserControls
                 )
             ).Show();
         }
+
+        private void DeleteAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show($"Are you sure that you want to delete {this.vm.SelectedAccount.Name}", "Delete account", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                this.vm.DeleteAccount();
+                Task.Run(() =>this.vm.CollectDataAsync());
+            }
+        }
     }
 }

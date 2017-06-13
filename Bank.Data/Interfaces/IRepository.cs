@@ -18,8 +18,8 @@ namespace Bank.Data.Interfaces
         Task<T> CreateAsync(T entity);
         T Update(T entity);
         Task<T> UpdateAsync(T entity);
-        Boolean Delete(T entity);
-        Task<Boolean> DeleteAsync(T entity);
-
+        Boolean Delete(int Id);
+        Task<Boolean> DeleteAsync(int Id);
+        void CalculateBalanceForAccount(int accountId);
     }
 }

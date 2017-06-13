@@ -3,6 +3,8 @@ using Bank.Data.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
+using Bank.Data.Services;
 
 namespace BankWPF.ViewModels
 {
@@ -70,6 +72,11 @@ namespace BankWPF.ViewModels
                 RaisePropertyChanged("SelectedAccount");
                 RaisePropertyChanged("AccountIsSelected");
             }
+        }
+
+        public void DeleteAccount()
+        {
+            BankDataService.Instance.DeleteAccount(this.SelectedAccount.AccountId);
         }
 
         public bool AccountIsSelected

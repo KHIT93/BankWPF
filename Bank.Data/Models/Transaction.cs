@@ -17,7 +17,7 @@ namespace Bank.Data.Models
         {
             this.Account = account;
             this.Amount = amount;
-            this.Timstamp = DateTime.Now;
+            this.Timestamp = DateTime.Now;
         }
 
         public Transaction(Account account, double amount, string description)
@@ -25,7 +25,7 @@ namespace Bank.Data.Models
             this.Account = account;
             this.Amount = amount;
             this.Description = description;
-            this.Timstamp = DateTime.Now;
+            this.Timestamp = DateTime.Now;
         }
 
         [Display(Name = "Transaction ID")]
@@ -39,7 +39,7 @@ namespace Bank.Data.Models
 
         [Display(Name = "Transaction Time")]
         [DataType(DataType.DateTime)]
-        public DateTime Timstamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         public String Description { get; set; }
     }

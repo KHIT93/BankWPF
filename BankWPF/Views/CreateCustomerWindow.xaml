@@ -1,0 +1,41 @@
+﻿<Window x:Class="BankWPF.Views.CreateCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankWPF.Views"
+        mc:Ignorable="d"
+        Title="Create new customer" Height="300" Width="300">
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Create a button that allows the user to create the account by either clicking the button or just pressing Enter on the keyboard -->
+            <Button Content="Create" Grid.Column="0" Name="CreateNewCustomerButton" IsDefault="True" Width="75" VerticalAlignment="Bottom" Click="CreateNewCustomerButton_Click"/>
+            <!-- Create a button to allow the user to cancel the creation and send a response, indicating ths, to the object that called ShowDialog() -->
+            <Button Content="Cancel" Grid.Column="1" Name="CancelCreateNewCustomerButton" IsCancel="True" Width="75" VerticalAlignment="Bottom"/>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Name="FirstNameLabel" Grid.Row="0" Grid.Column="0" Content="First Name"/>
+            <TextBox Text="{Binding FirstName, Mode=TwoWay}" Name="FirstNameTextBox" Grid.Row="0" Grid.Column="1" Height="20" VerticalAlignment="Top"/>
+            <Label Name="LastNameLabel" Grid.Row="1" Grid.Column="0" Content="Last Name"/>
+            <TextBox Text="{Binding LastName, Mode=TwoWay}" Name="LastNameTextBox" Grid.Row="1" Grid.Column="1" Height="20" VerticalAlignment="Top"/>
+            <Label Name="CompanyNameLabel" Grid.Row="2" Grid.Column="0" Content="Company Name"/>
+            <TextBox Text="{Binding CompanyName, Mode=TwoWay}" Name="CompanyNameTextBox" Grid.Row="2" Grid.Column="1" Height="20" VerticalAlignment="Top"/>
+            <Label Name="VATNoLabel" Grid.Row="3" Grid.Column="0" Content="VAT Number"/>
+            <TextBox Text="{Binding VATNo, Mode=TwoWay}" Name="VATNoTextBox" Grid.Row="3" Grid.Column="1" Height="20" VerticalAlignment="Top"/>
+        </Grid>
+    </DockPanel>
+</Window>

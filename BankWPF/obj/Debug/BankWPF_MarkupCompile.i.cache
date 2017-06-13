@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Kenneth Hansen\documents\visual studio 2017\Projects\BankWPF\BankWPF\App.xaml
-5615223436
+101565968568
 
-181654410067
+281458308652
 17-2024033908
-LoginWindow.xaml;MainWindow.xaml;UserControls\AccountsMainView.xaml;Views\CreateAccountWindow.xaml;Views\ShowAccountDetailsWindow.xaml;
+LoginWindow.xaml;MainWindow.xaml;UserControls\AccountsMainView.xaml;UserControls\CustomersMainWindow.xaml;Views\CreateAccountWindow.xaml;Views\CreateCustomerWindow.xaml;Views\CreateRawTransactionWindow.xaml;Views\CreateTransactionWindow.xaml;Views\ShowAccountDetailsWindow.xaml;Views\ShowCustomerWindow.xaml;
 
 False
 

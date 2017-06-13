@@ -22,5 +22,13 @@ namespace Bank.Data.Models
             }
         }
 
+        public string FullNameWithCompany
+        {
+            get
+            {
+                return (String.IsNullOrEmpty(this.CompanyName)) ? this.FullName : $"{this.CompanyName} ({this.FirstName} {this.LastName})";
+            }
+        }
+
     }
 }

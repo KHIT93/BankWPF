@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201706090955051_AddDescriptionToTransactions.Designer.cs">
       <DependentUpon>201706090955051_AddDescriptionToTransactions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706130649035_FixTypoOnTransactionTimestamp.cs" />
+    <Compile Include="Migrations\201706130649035_FixTypoOnTransactionTimestamp.Designer.cs">
+      <DependentUpon>201706130649035_FixTypoOnTransactionTimestamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706090955051_AddDescriptionToTransactions.resx">
       <DependentUpon>201706090955051_AddDescriptionToTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706130649035_FixTypoOnTransactionTimestamp.resx">
+      <DependentUpon>201706130649035_FixTypoOnTransactionTimestamp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

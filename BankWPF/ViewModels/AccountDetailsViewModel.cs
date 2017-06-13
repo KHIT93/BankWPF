@@ -1,4 +1,5 @@
 ﻿using Bank.Data.Models;
+using Bank.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,12 @@ namespace BankWPF.ViewModels
             {
                 this.model.Customer = value;
             }
+        }
+
+        internal void RefreshModel()
+        {
+            this.model = BankDataService.Instance.GetAccount(this.AccountId, true);
+            RaisePropertyChanged("Transactions");
         }
 
         public ICollection<Transaction> Transactions

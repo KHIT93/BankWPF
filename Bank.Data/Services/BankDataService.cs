@@ -15,6 +15,7 @@ namespace Bank.Data.Services
         private static BankDataService _instance;
         protected string _bankName;
         protected IRepository<Account> _accounts = new AccountRepository();
+
         protected IRepository<Customer> _customers = new CustomerRepository();
         protected IRepository<Transaction> _transactions = new TransactionRepository();
         public BankDataService()
@@ -80,7 +81,7 @@ namespace Bank.Data.Services
 
         public string DeleteAccount(int accountNumber)
         {
-            return this._accounts.Delete(this.GetAccount(accountNumber, false)).ToString();
+            return this._accounts.Delete(accountNumber).ToString();
         }
 
         public Account GetAccount(int AccountId, bool GetAllRelationships)
@@ -113,9 +114,24 @@ namespace Bank.Data.Services
             return await Task.Run(() => this.GetCustomers());
         }
 
-        public string Transaction(double amount, int accountNumber)
+        public Customer CreateCustomer(string firstName, string lastName, string companyName, string vatNo)
         {
-            return this._transactions.Create(new Transaction(this.GetAccount(accountNumber, false), amount)).ToString();
+            return this._customers.Create(new Customer { FirstName = firstName, LastName = lastName, CompanyName = companyName, VATNo = vatNo });
+        }
+
+        public string Transaction(double amount, int accountNumber, string description)
+        {
+            string output = this._transactions.Create(new Transaction(this.GetAccountWithCustomer(accountNumber), amount, description)).ToString();
+            Task.Run(() => this._accounts.CalculateBalanceForAccount(accountNumber));
+            return output;
+        }
+
+        public void CalculateBalance()
+        {
+            foreach (Account account in this._accounts.GetAll())
+            {
+                this._accounts.CalculateBalanceForAccount(account.AccountId);
+            }
         }
     }
 }
