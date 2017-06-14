@@ -27,11 +27,5 @@ namespace BankWPF.Views
             this.vm = vm;
             this.DataContext = vm;
         }
-
-        private void CreateNewTransactionButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.vm.Save();
-            DialogResult = true;
-        }
     }
 }

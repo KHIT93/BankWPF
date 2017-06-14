@@ -1,10 +1,13 @@
 ﻿using Bank.Data.Models;
 using Bank.Data.Services;
+using BankWPF.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace BankWPF.ViewModels
 {
@@ -13,19 +16,22 @@ namespace BankWPF.ViewModels
         private bool _customerEditable = true;
         private bool _accountEditable = true;
         protected Customer _customer;
+        public ICommand CreateNewTransactionButtonCommand { get; protected set; }
 
         public CreateTransactionViewModel()
         {
-
+            this.CreateNewTransactionButtonCommand = new DelegateCommand(Save, CanSave);
         }
         public CreateTransactionViewModel(Customer customer)
         {
+            this.CreateNewTransactionButtonCommand = new DelegateCommand(Save, CanSave);
             this.Customer = customer;
             this.CustomerEditable = false;
         }
 
         public CreateTransactionViewModel(Customer customer, Account account)
         {
+            this.CreateNewTransactionButtonCommand = new DelegateCommand(Save, CanSave);
             this.Customer = customer;
             this.CustomerEditable = false;
             this.Account = account;
@@ -77,6 +83,17 @@ namespace BankWPF.ViewModels
         public void Save()
         {
             BankDataService.Instance.Transaction(this.Amount, this.Account.AccountId, this.Description);
+        }
+
+        public void Save(object parameter)
+        {
+            this.Save();
+            ((Window)parameter).DialogResult = true;
+        }
+
+        public bool CanSave(object parameter)
+        {
+            return (this.Account != null && this.Amount > 0 && String.IsNullOrEmpty(this.Description));
         }
 
         public ICollection<Customer> Customers

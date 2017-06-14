@@ -27,8 +27,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Grid.Row="2" Grid.Column="0" Name="CreateNewCustomerButton" Content="Create new customer" Click="CreateNewCustomerButton_Click"/>
-            <Button IsEnabled="{Binding CustomerIsSelected}" Grid.Row="2" Grid.Column="1" Name="ShowAccountHistoryButton" Content="Show customer information" Click="ShowCustomerButton_Click"/>
+            <Button Command="{Binding CreateNewCustomerButtonCommand}" Grid.Row="2" Grid.Column="0" Name="CreateNewCustomerButton" Content="Create new customer"/>
+            <Button Command="{Binding ShowCustomerButtonCommand}" Grid.Row="2" Grid.Column="1" Name="ShowCustomerButton" Content="Show customer information"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -8,9 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              >
-    <UserControl.Resources>
-        <vm:AccountMainViewModel x:Key="AccountMainViewModel"/>
-    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -31,8 +28,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="2" Grid.Column="0" Name="CreateNewAccountButton" Content="Create new account" Click="CreateNewAccountButton_Click"/>
-        <Button IsEnabled="{Binding AccountIsSelected}" Grid.Row="2" Grid.Column="1" Name="ShowAccountHistoryButton" Content="Show account history" Click="ShowAccountHistoryButton_Click"/>
-        <Button IsEnabled="{Binding AccountIsSelected}" Grid.Row="2" Grid.Column="3" Name="DeleteAccountButton" Content="Delete account" Click="DeleteAccountButton_Click" />
+        <Button Command="{Binding CreateNewAccountButtonCommand}" Grid.Row="2" Grid.Column="0" Name="CreateNewAccountButton" Content="Create new account"/>
+        <Button Command="{Binding ShowAccountHistoryButtonCommand}" Grid.Row="2" Grid.Column="1" Name="ShowAccountHistoryButton" Content="Show account history"/>
+        <Button Command="{Binding DeleteAccountButtonCommand}" Grid.Row="2" Grid.Column="3" Name="DeleteAccountButton" Content="Delete account"/>
     </Grid>
 </UserControl>

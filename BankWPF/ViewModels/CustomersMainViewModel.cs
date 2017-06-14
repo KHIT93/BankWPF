@@ -1,12 +1,15 @@
 ﻿using Bank.Data.Context;
 using Bank.Data.Models;
 using Bank.Data.Services;
+using BankWPF.Commands;
+using BankWPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BankWPF.ViewModels
 {
@@ -14,6 +17,12 @@ namespace BankWPF.ViewModels
     {
         protected ObservableCollection<Customer> _customers;
         protected Customer _selected;
+
+        public CustomersMainViewModel()
+        {
+            this.CreateNewCustomerButtonCommand = new DelegateCommand(CreateNewCustomerButtonClick, CanCreateCustomer);
+            this.ShowCustomerButtonCommand = new DelegateCommand(ShowCustomerButtonClick, CustomerSelected);
+        }
         public void CollectData()
         {
             ObservableCollection<Customer> collection = new ObservableCollection<Customer>();
@@ -77,5 +86,40 @@ namespace BankWPF.ViewModels
                 return this._selected != null;
             }
         }
+
+        private bool CustomerSelected(object parameter)
+        {
+            return this.CustomerIsSelected;
+        }
+
+        public ICommand ShowCustomerButtonCommand { get; set; }
+        public ICommand CreateNewCustomerButtonCommand { get; set; }
+
+        private void CreateNewCustomerButtonClick(object parameter)
+        {
+            if ((new CreateCustomerWindow()).ShowDialog() == true)
+            {
+                Task.Run(() => (this.CollectDataAsync()));
+            }
+        }
+        private bool CanCreateCustomer(object parameter)
+        {
+            return true;
+        }
+
+        private void ShowCustomerButtonClick(object parameter)
+        {
+            (new ShowCustomerWindow
+                (
+                    new ShowCustomerViewModel
+                    (
+                        BankDataService.Instance.GetCustomer
+                        (
+                            this.SelectedCustomer.Id, true
+                        )
+                    )
+                )
+            ).Show();
+    }
     }
 }

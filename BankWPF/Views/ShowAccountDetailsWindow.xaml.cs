@@ -28,37 +28,5 @@ namespace BankWPF.Views
             this.vm = vm;
             this.DataContext = this.vm;
         }
-
-        private void DepositTransactionMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            if((new CreateTransactionWindow
-                (
-                    new CreateTransactionViewModel
-                    (
-                        this.vm.Customer,
-                        BankDataService.Instance.GetAccount(this.vm.AccountId, false)
-                    )
-                )
-                .ShowDialog() == true))
-            {
-                this.vm.RefreshModel();
-            }
-        }
-
-        private void WithdrawTransactionMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            if ((new CreateTransactionWindow
-                (
-                    new CreateWithdrawTransactionViewModel
-                    (
-                        this.vm.Customer,
-                        BankDataService.Instance.GetAccount(this.vm.AccountId, false)
-                    )
-                )
-                .ShowDialog() == true))
-            {
-                this.vm.RefreshModel();
-            }
-        }
     }
 }

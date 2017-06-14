@@ -31,28 +31,5 @@ namespace BankWPF.UserControls
             this.DataContext = this.vm;
             Task.Run(() => (this.vm.CollectDataAsync()));
         }
-
-        private void CreateNewCustomerButton_Click(object sender, RoutedEventArgs e)
-        {
-            if((new CreateCustomerWindow()).ShowDialog() == true)
-            {
-                Task.Run(() => (this.vm.CollectDataAsync()));
-            }
-        }
-
-        private void ShowCustomerButton_Click(object sender, RoutedEventArgs e)
-        {
-            (new ShowCustomerWindow
-                (
-                    new ShowCustomerViewModel
-                    (
-                        BankDataService.Instance.GetCustomer
-                        (
-                            this.vm.SelectedCustomer.Id, true
-                        )
-                    )
-                )
-            ).Show();
-        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Bank.Data.Models;
+using BankWPF.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +13,19 @@ namespace BankWPF.ViewModels
 
         public CreateWithdrawTransactionViewModel()
         {
+            this.CreateNewTransactionButtonCommand = new DelegateCommand(Save, CanSave);
 
         }
         public CreateWithdrawTransactionViewModel(Customer customer)
         {
+            this.CreateNewTransactionButtonCommand = new DelegateCommand(Save, CanSave);
             this.Customer = customer;
             this.CustomerEditable = false;
         }
 
         public CreateWithdrawTransactionViewModel(Customer customer, Account account)
         {
+            this.CreateNewTransactionButtonCommand = new DelegateCommand(Save, CanSave);
             this.Customer = customer;
             this.CustomerEditable = false;
             this.Account = account;

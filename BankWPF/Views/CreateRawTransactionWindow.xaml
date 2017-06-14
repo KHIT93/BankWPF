@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankWPF.Views"
         mc:Ignorable="d"
+        x:Name="CreateRawTransaction"
         Title="CreateRawTransactionWindow" Height="300" Width="300">
     <Grid>
         <DockPanel>
@@ -14,7 +15,7 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Create a button that allows the user to create the account by either clicking the button or just pressing Enter on the keyboard -->
-                <Button Content="Create" Grid.Column="0" Name="CreateNewTransactionButton" IsDefault="True" Width="75" VerticalAlignment="Bottom" Click="CreateNewTransactionButton_Click"/>
+                <Button Content="Create" Grid.Column="0" Name="CreateNewTransactionButton" IsDefault="True" Width="75" VerticalAlignment="Bottom" Command="{Binding CreateNewTransactionButtonCommand}" CommandParameter="{Binding ElementName=CreateRawTransaction}"/>
                 <!-- Create a button to allow the user to cancel the creation and send a response, indicating ths, to the object that called ShowDialog() -->
                 <Button Content="Cancel" Grid.Column="1" Name="CancelCreateNewTransactionButton" IsCancel="True" Width="75" VerticalAlignment="Bottom"/>
             </Grid>

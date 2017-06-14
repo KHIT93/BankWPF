@@ -1,10 +1,13 @@
 ﻿using Bank.Data.Models;
 using Bank.Data.Services;
+using BankWPF.Commands;
+using BankWPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BankWPF.ViewModels
 {
@@ -14,6 +17,8 @@ namespace BankWPF.ViewModels
         public AccountDetailsViewModel(Account model)
         {
             this.model = model;
+            this.DepositTransactionMenuItemCommand = new DelegateCommand(DepositTransactionMenuItemClick, CanDeposit);
+            this.WithdrawTransactionMenuItemCommand = new DelegateCommand(WithdrawTransactionMenuItemClick, CanWithdraw);
         }
 
         public string WindowTitle
@@ -70,7 +75,7 @@ namespace BankWPF.ViewModels
             }
         }
 
-        internal void RefreshModel()
+        public void RefreshModel()
         {
             this.model = BankDataService.Instance.GetAccount(this.AccountId, true);
             RaisePropertyChanged("Transactions");
@@ -90,6 +95,50 @@ namespace BankWPF.ViewModels
             {
                 return this.model.AccountType;
             }
+        }
+
+        public ICommand DepositTransactionMenuItemCommand { get; private set; }
+        public void DepositTransactionMenuItemClick(object parameter)
+        {
+            if ((new CreateTransactionWindow
+                (
+                    new CreateTransactionViewModel
+                    (
+                        this.Customer,
+                        BankDataService.Instance.GetAccount(this.AccountId, false)
+                    )
+                )
+                .ShowDialog() == true))
+            {
+                this.RefreshModel();
+            }
+        }
+
+        public bool CanDeposit(object parameter)
+        {
+            return true;
+        }
+        public ICommand WithdrawTransactionMenuItemCommand { get; private set; }
+
+        public void WithdrawTransactionMenuItemClick(object parameter)
+        {
+            if ((new CreateTransactionWindow
+                (
+                    new CreateWithdrawTransactionViewModel
+                    (
+                        this.Customer,
+                        BankDataService.Instance.GetAccount(this.AccountId, false)
+                    )
+                )
+                .ShowDialog() == true))
+            {
+                this.RefreshModel();
+            }
+        }
+
+        public bool CanWithdraw(object parameter)
+        {
+            return this.model.CanWithdraw();
         }
 
         #endregion

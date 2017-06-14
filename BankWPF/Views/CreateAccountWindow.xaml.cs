@@ -27,11 +27,5 @@ namespace BankWPF.Views
             vm = new CreateAccountViewModel();
             this.DataContext = vm;
         }
-
-        private void CreateNewAccountButton_Click(object sender, RoutedEventArgs e)
-        {
-            vm.Save();
-            this.DialogResult = true;
-        }
     }
 }

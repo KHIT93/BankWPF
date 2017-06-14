@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankWPF.Views"
         mc:Ignorable="d"
+        x:Name="ShowAccountDetails"
         Title="{Binding WindowTitle}" Height="500" Width="600">
     <ScrollViewer>
         <StackPanel>
             <Menu Height="25">
-                <MenuItem Name="DepositTransactionMenuItem" VerticalContentAlignment="Center" Header="Deposit" Height="25" Width="75" Click="DepositTransactionMenuItem_Click"/>
-                <MenuItem Name="WithdrawTransactionMenuItem" VerticalContentAlignment="Center" Header="Withdraw" Height="25" Width="75" Click="WithdrawTransactionMenuItem_Click"/>
+                <MenuItem Name="DepositTransactionMenuItem" VerticalContentAlignment="Center" Header="Deposit" Height="25" Width="75" Command="{Binding DepositTransactionMenuItemCommand}"/>
+                <MenuItem Name="WithdrawTransactionMenuItem" VerticalContentAlignment="Center" Header="Withdraw" Height="25" Width="75" Command="{Binding WithdrawTransactionMenuItemCommand}"/>
             </Menu>
             <WrapPanel>
                 <Label Content="Account owner: "/>
