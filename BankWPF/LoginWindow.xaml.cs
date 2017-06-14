@@ -3,6 +3,7 @@ using Bank.Security;
 using BankWPF.ViewModels;
 using System.Windows;
 using System;
+using System.Windows.Media.Imaging;
 
 namespace BankWPF
 {
@@ -19,6 +20,7 @@ namespace BankWPF
                 InitializeComponent();
                 this.vm = new LoginViewModel();
                 this.DataContext = vm;
+                this.Icon = new BitmapImage(new Uri("Expose.ico", UriKind.Relative));
             }
             catch (Exception ex)
             {

@@ -25,6 +25,7 @@ namespace BankWPF
         public MainWindow()
         {
             InitializeComponent();
+            this.Icon = new BitmapImage(new Uri("Expose.ico", UriKind.Relative));
         }
 
         private void ShowAccountsButton_Click(object sender, RoutedEventArgs e)

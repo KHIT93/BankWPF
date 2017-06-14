@@ -13,6 +13,9 @@
     </Window.Resources>
     <ScrollViewer>
         <DockPanel>
+            <DockPanel.Background>
+                <ImageBrush ImageSource="watermark.png" />
+            </DockPanel.Background>
             <StackPanel DockPanel.Dock="Left" Margin="10,0,10,0" Name="MenuStackPanel">
                 <Button Name="ShowAccountsButton" Content="Accounts" Click="ShowAccountsButton_Click"/>
                 <Button Name="ShowCustomersButton" Content="Customers" Click="ShowCustomersButton_Click"/>

@@ -28,6 +28,7 @@
                     <DataGridTextColumn x:Name="Description" Header="Description" Binding="{Binding Path=Description}"/>
                     <DataGridTextColumn x:Name="Timestamp" Header="Timestamp" Binding="{Binding Path=Timestamp}"/>
                     <DataGridTextColumn x:Name="Amount" Header="Amount" Binding="{Binding Path=Amount}"/>
+                    <DataGridTextColumn x:Name="User" Header="User" Binding="{Binding Path=User}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

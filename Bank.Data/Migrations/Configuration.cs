@@ -54,31 +54,31 @@ namespace Bank.Data.Migrations
             context.Transactions.AddOrUpdate(
                 t => t.Description,
                 #region Transactions for Lønkonto Bill Jobs
-                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), 15000, "Løn fra arbejde Juni 2017"),
-                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), -3000, "Husleje Juni 2017"),
-                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), -3000, "Forsikring 2017-2018"),
-                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), 3000, "Depositum BoxIT"),
-                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), -3000, "Afdrag AA12345"),
+                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), 15000, "Løn fra arbejde Juni 2017", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), -3000, "Husleje Juni 2017", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), -3000, "Forsikring 2017-2018", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), 3000, "Depositum BoxIT", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto (Bill Jobs)" && a.Customer.FirstName == "Bill" && a.Customer.LastName == "Jobs"), -3000, "Afdrag AA12345", context.Users.First()),
                 #endregion
                 #region Transactions for Lønkonto Jens Jensen
-                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto" && a.Customer.FirstName == "Jens" && a.Customer.LastName == "Jensen"), 30000, "Løn Maj 2017"),
+                new Transaction(context.Accounts.First(a => a.Name == "Lønkonto" && a.Customer.FirstName == "Jens" && a.Customer.LastName == "Jensen"), 30000, "Løn Maj 2017", context.Users.First()),
                 #endregion
                 #region Transactions for Driftskonto Grillhest Egon Petsen
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 3000, "Start kapital"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -2500, "Hestekød"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 50000, "Anden etnisk tilskud"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 75000, "Banklån"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -60000, "Køb af nye borde og stole"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 500, "Omsætning fra Dankort 01062017"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -18000, "Løn til mig selv"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 3000, "Manuel indbetaling 01062017"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 4569, "Omsætning fra Dankort 05062017"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -3000, "Dankort gebyrer Maj 2017"),
-                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -3000, "Renter af overtræk Marts 2017"),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 3000, "Start kapital", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -2500, "Hestekød", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 50000, "Anden etnisk tilskud", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 75000, "Banklån", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -60000, "Køb af nye borde og stole", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 500, "Omsætning fra Dankort 01062017", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -18000, "Løn til mig selv", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 3000, "Manuel indbetaling 01062017", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 4569, "Omsætning fra Dankort 05062017", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -3000, "Dankort gebyrer Maj 2017", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Driftskonto Grillhest" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -3000, "Renter af overtræk Marts 2017", context.Users.First()),
                 #endregion
                 #region Transactions for Til mig Egon Petsen
-                new Transaction(context.Accounts.First(a => a.Name == "Til mig" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 18000, "Løn for hårdt arbejde"),
-                new Transaction(context.Accounts.First(a => a.Name == "Til mig" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -2500, "Forsirking af min dyre bil")
+                new Transaction(context.Accounts.First(a => a.Name == "Til mig" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), 18000, "Løn for hårdt arbejde", context.Users.First()),
+                new Transaction(context.Accounts.First(a => a.Name == "Til mig" && a.Customer.FirstName == "Egon" && a.Customer.LastName == "Petsen"), -2500, "Forsirking af min dyre bil", context.Users.First())
                 #endregion
             );
             context.SaveChanges();

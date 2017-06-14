@@ -28,6 +28,15 @@ namespace Bank.Data.Models
             this.Timestamp = DateTime.Now;
         }
 
+        public Transaction(Account account, double amount, string description, User employee)
+        {
+            this.Account = account;
+            this.Amount = amount;
+            this.Description = description;
+            this.Timestamp = DateTime.Now;
+            this.User = employee;
+        }
+
         [Display(Name = "Transaction ID")]
         public int Id { get; set; }
 
