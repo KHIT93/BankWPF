@@ -12,10 +12,12 @@ namespace Bank.Data.Repositories
 {
     public class AccountRepository : IRepository<Account>
     {
-        public Account Create(Account entity)
+        public Account Create(Account entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
+                Customer customer = context.Customers.Find(entity.Customer.Id);
+                entity.Customer = customer;
                 context.Accounts.Add(entity);
                 int x = context.SaveChanges();
                 return entity;
@@ -23,17 +25,19 @@ namespace Bank.Data.Repositories
 
         }
 
-        public async Task<Account> CreateAsync(Account entity)
+        public async Task<Account> CreateAsync(Account entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
+                Customer customer = context.Customers.Find(entity.Customer.Id);
+                entity.Customer = customer;
                 context.Accounts.Add(entity);
                 int x = await context.SaveChangesAsync();
                 return entity;
             }
         }
 
-        public bool Delete(int Id)
+        public bool Delete(int Id, User user)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
@@ -47,7 +51,7 @@ namespace Bank.Data.Repositories
             return success;
         }
 
-        public async Task<bool> DeleteAsync(int Id)
+        public async Task<bool> DeleteAsync(int Id, User user)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
@@ -111,7 +115,7 @@ namespace Bank.Data.Repositories
             });
         }
 
-        public Account Update(Account entity)
+        public Account Update(Account entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
@@ -121,7 +125,7 @@ namespace Bank.Data.Repositories
             }
         }
 
-        public async Task<Account> UpdateAsync(Account entity)
+        public async Task<Account> UpdateAsync(Account entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {

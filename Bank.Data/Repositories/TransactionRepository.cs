@@ -13,12 +13,14 @@ namespace Bank.Data.Repositories
 {
     public class TransactionRepository : IRepository<Transaction>
     {
-        public Transaction Create(Transaction entity)
+        public Transaction Create(Transaction entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
                 Account account = context.Accounts.Find(entity.Account.AccountId);
+                User employee = context.Users.Find(user.Id);
                 entity.Account = account;
+                entity.User = employee;
                 context.Transactions.Add(entity);
                 context.SaveChanges();
                 return entity;
@@ -26,12 +28,14 @@ namespace Bank.Data.Repositories
 
         }
 
-        public async Task<Transaction> CreateAsync(Transaction entity)
+        public async Task<Transaction> CreateAsync(Transaction entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
                 Account account = context.Accounts.Find(entity.Account.AccountId);
+                User employee = context.Users.Find(user.Id);
                 entity.Account = account;
+                entity.User = employee;
                 context.Transactions.Add(entity);
                 int x = await context.SaveChangesAsync();
 
@@ -39,7 +43,7 @@ namespace Bank.Data.Repositories
             }
         }
 
-        public bool Delete(int Id)
+        public bool Delete(int Id, User user)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
@@ -52,7 +56,7 @@ namespace Bank.Data.Repositories
             return success;
         }
 
-        public async Task<bool> DeleteAsync(int Id)
+        public async Task<bool> DeleteAsync(int Id, User user)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
@@ -115,7 +119,7 @@ namespace Bank.Data.Repositories
             });
         }
 
-        public Transaction Update(Transaction entity)
+        public Transaction Update(Transaction entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
@@ -125,7 +129,7 @@ namespace Bank.Data.Repositories
             }
         }
 
-        public async Task<Transaction> UpdateAsync(Transaction entity)
+        public async Task<Transaction> UpdateAsync(Transaction entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {

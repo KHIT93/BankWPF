@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bank.Data.Models;
+using Bank.Security;
+using BankWPF.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System;
 
 namespace BankWPF
 {
@@ -19,9 +11,24 @@ namespace BankWPF
     /// </summary>
     public partial class LoginWindow : Window
     {
+        protected LoginViewModel vm;
         public LoginWindow()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                this.vm = new LoginViewModel();
+                this.DataContext = vm;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            this.vm.Password = this.PasswordTextBox.Password;
         }
     }
 }

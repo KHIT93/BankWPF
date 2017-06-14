@@ -7,12 +7,14 @@ using Bank.Data.Interfaces;
 using Bank.Data.Models;
 using Bank.Data.Repositories;
 using Bank.Data.Exceptions;
+using Bank.Data.Context;
 
 namespace Bank.Data.Services
 {
     public class BankDataService : IBankService
     {
         private static BankDataService _instance;
+        protected User user;
         protected string _bankName;
         protected IRepository<Account> _accounts = new AccountRepository();
 
@@ -76,12 +78,12 @@ namespace Bank.Data.Services
                     throw new InvalidAccountException("The chosen account type is not valid");
             }
             account.Customer = customer;
-            return this._accounts.Create(account).ToString();
+            return this._accounts.Create(account, this.user).ToString();
         }
 
         public string DeleteAccount(int accountNumber)
         {
-            return this._accounts.Delete(accountNumber).ToString();
+            return this._accounts.Delete(accountNumber, this.user).ToString();
         }
 
         public Account GetAccount(int AccountId, bool GetAllRelationships)
@@ -116,12 +118,12 @@ namespace Bank.Data.Services
 
         public Customer CreateCustomer(string firstName, string lastName, string companyName, string vatNo)
         {
-            return this._customers.Create(new Customer { FirstName = firstName, LastName = lastName, CompanyName = companyName, VATNo = vatNo });
+            return this._customers.Create(new Customer { FirstName = firstName, LastName = lastName, CompanyName = companyName, VATNo = vatNo }, this.user);
         }
 
         public string Transaction(double amount, int accountNumber, string description)
         {
-            string output = this._transactions.Create(new Transaction(this.GetAccountWithCustomer(accountNumber), amount, description)).ToString();
+            string output = this._transactions.Create(new Transaction(this.GetAccountWithCustomer(accountNumber), amount, description), this.user).ToString();
             Task.Run(() => this._accounts.CalculateBalanceForAccount(accountNumber));
             return output;
         }
@@ -131,6 +133,27 @@ namespace Bank.Data.Services
             foreach (Account account in this._accounts.GetAll())
             {
                 this._accounts.CalculateBalanceForAccount(account.AccountId);
+            }
+        }
+
+        public void SetSignedInUser(User user)
+        {
+            this.user = user;
+        }
+
+        public void SetSignedInUser(string username)
+        {
+            using (var context = new BankDatabaseContext())
+            {
+                this.SetSignedInUser(context.Users.Where(u => u.Username == username).First());
+            }
+        }
+
+        public void SetSignedInUser(int Id)
+        {
+            using (var context = new BankDatabaseContext())
+            {
+                this.SetSignedInUser(context.Users.Find(Id));
             }
         }
     }

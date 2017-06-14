@@ -12,7 +12,7 @@ namespace Bank.Data.Repositories
 {
     public class CustomerRepository : IRepository<Customer>
     {
-        public Customer Create(Customer entity)
+        public Customer Create(Customer entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
@@ -23,7 +23,7 @@ namespace Bank.Data.Repositories
 
         }
 
-        public async Task<Customer> CreateAsync(Customer entity)
+        public async Task<Customer> CreateAsync(Customer entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
@@ -33,7 +33,7 @@ namespace Bank.Data.Repositories
             }
         }
 
-        public bool Delete(int Id)
+        public bool Delete(int Id, User user)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
@@ -46,7 +46,7 @@ namespace Bank.Data.Repositories
             return success;
         }
 
-        public async Task<bool> DeleteAsync(int Id)
+        public async Task<bool> DeleteAsync(int Id, User user)
         {
             bool success = false;
             using (var context = new BankDatabaseContext())
@@ -109,7 +109,7 @@ namespace Bank.Data.Repositories
              });
         }
 
-        public Customer Update(Customer entity)
+        public Customer Update(Customer entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {
@@ -119,7 +119,7 @@ namespace Bank.Data.Repositories
             }
         }
 
-        public async Task<Customer> UpdateAsync(Customer entity)
+        public async Task<Customer> UpdateAsync(Customer entity, User user)
         {
             using (var context = new BankDatabaseContext())
             {

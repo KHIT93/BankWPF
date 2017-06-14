@@ -27,6 +27,11 @@ namespace Bank.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Users.AddOrUpdate(
+                u => u.Username,
+                new User { Username = "admin", Password = "lU7OMILuKlg=", Name = "Administrator" },
+                new User { Username = "kenneth", Password = "VQYM4B8ohd7BlurjDWql6g==", Name = "Kenneth Hansen" }
+            );
             context.Customers.AddOrUpdate(
                 c => c.FirstName,
                 new Customer { FirstName = "Jens", LastName = "Jensen" },

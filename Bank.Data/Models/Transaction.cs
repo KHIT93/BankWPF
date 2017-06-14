@@ -42,5 +42,6 @@ namespace Bank.Data.Models
         public DateTime Timestamp { get; set; }
 
         public String Description { get; set; }
+        public virtual User User { get; set; }
     }
 }

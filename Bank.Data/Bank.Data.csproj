@@ -66,6 +66,14 @@
     <Compile Include="Migrations\201706130649035_FixTypoOnTransactionTimestamp.Designer.cs">
       <DependentUpon>201706130649035_FixTypoOnTransactionTimestamp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706140717497_AddUserModel.cs" />
+    <Compile Include="Migrations\201706140717497_AddUserModel.Designer.cs">
+      <DependentUpon>201706140717497_AddUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706141002072_MarkUsernameUnique.cs" />
+    <Compile Include="Migrations\201706141002072_MarkUsernameUnique.Designer.cs">
+      <DependentUpon>201706141002072_MarkUsernameUnique.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -73,6 +81,7 @@
     <Compile Include="Models\SalaryAccount.cs" />
     <Compile Include="Models\SavingsAccount.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
@@ -86,12 +95,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BankClassLib\BankClassLib.csproj">
-      <Project>{de69b517-857d-492a-a502-8d459d9bf092}</Project>
-      <Name>BankClassLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201706081153492_Init.resx">
       <DependentUpon>201706081153492_Init.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +103,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706130649035_FixTypoOnTransactionTimestamp.resx">
       <DependentUpon>201706130649035_FixTypoOnTransactionTimestamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706140717497_AddUserModel.resx">
+      <DependentUpon>201706140717497_AddUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706141002072_MarkUsernameUnique.resx">
+      <DependentUpon>201706141002072_MarkUsernameUnique.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -51,5 +51,10 @@ namespace Bank.Data.Models
             this.Balance = this.Transactions.Sum(o => o.Amount);
             //return this.Transactions.Sum(o => o.Amount);
         }
+
+        public virtual bool CanWithdraw()
+        {
+            return this.Balance > 0;
+        }
     }
 }

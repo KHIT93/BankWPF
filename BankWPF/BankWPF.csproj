@@ -80,6 +80,7 @@
     <Compile Include="ViewModels\CreateTransactionViewModel.cs" />
     <Compile Include="ViewModels\CreateWithdrawTransactionViewModel.cs" />
     <Compile Include="ViewModels\CustomersMainViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ShowCustomerViewModel.cs" />
     <Compile Include="Views\CreateAccountWindow.xaml.cs">
@@ -179,6 +180,10 @@
     <ProjectReference Include="..\Bank.Data\Bank.Data.csproj">
       <Project>{38fb3e1d-78ba-445f-a4d6-2cc3906170eb}</Project>
       <Name>Bank.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bank.Security\Bank.Security.csproj">
+      <Project>{615dff89-f4f2-424e-80eb-e61a438c8ce5}</Project>
+      <Name>Bank.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

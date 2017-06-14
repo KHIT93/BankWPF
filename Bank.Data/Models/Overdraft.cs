@@ -49,5 +49,10 @@ namespace Bank.Data.Models
         {
             this._balance *= (this._balance < 0) ? 1.05 : 1.005;
         }
+
+        public override bool CanWithdraw()
+        {
+            return true;
+        }
     }
 }

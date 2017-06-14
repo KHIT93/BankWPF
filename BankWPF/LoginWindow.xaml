@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankWPF"
         mc:Ignorable="d"
+        x:Name="Login"
         Title="LoginWindow" Height="300" Width="300">
     <Grid>
         <Label Grid.Row="0" Grid.Column="0" Content="Log in" FontSize="20" Name="HeaderTitleLabel"/>
 
         <Label Grid.Row="1" Grid.Column="0" Content="Username" Name="UsernameLabel"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Name="UsernameTextBox"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="UsernameTextBox" Text="{Binding Username, Mode=TwoWay}"/>
 
         <Label Grid.Row="2" Grid.Column="0" Content="Password" Name="PasswordLabel"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Name="PasswordTextBox"/>
+        <!--<TextBox Grid.Row="2" Grid.Column="1" Name="PasswordTextBox"/>-->
+        <PasswordBox Grid.Row="2" Grid.Column="1" Name="PasswordTextBox" PasswordChanged="PasswordTextBox_PasswordChanged"/>
 
-        <Button Content="Log in" Grid.Row="3" Grid.Column="1" Width="100" HorizontalAlignment="Right" Name="LogInButton"/>
+        <Button Content="{Binding LoginButtonText, Mode=OneWay}" Grid.Row="3" Grid.Column="1" Width="100" HorizontalAlignment="Right" Name="LogInButton" Command="{Binding LogInButtonCommand}" CommandParameter="{Binding ElementName=Login}"/>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
