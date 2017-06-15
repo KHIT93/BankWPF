@@ -57,14 +57,14 @@ namespace BankWPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Login error");
+                    MessageBox.Show("There was an erro logging you in. Please check your username and password", "Login error");
                 }
                 this.CanLogin = true;
                 this.LoginButtonText = "Log in";
             }
             else
             {
-                MessageBox.Show("You need to fill  in username and password");
+                MessageBox.Show("You need to fill  in username and password", "Validation error");
             }
         }
 

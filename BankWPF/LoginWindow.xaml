@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BankWPF"
         mc:Ignorable="d"
         x:Name="Login"
-        Title="LoginWindow" Height="300" Width="300">
+        Title="Sign in" Height="300" Width="300">
     <Grid>
         <Label Grid.Row="0" Grid.Column="0" Content="Log in" FontSize="20" Name="HeaderTitleLabel"/>
 
