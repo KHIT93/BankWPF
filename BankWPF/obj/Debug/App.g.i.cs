@@ -61,6 +61,8 @@ namespace BankWPF {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
+            SplashScreen splashScreen = new SplashScreen("splashscreen.png");
+            splashScreen.Show(true);
             BankWPF.App app = new BankWPF.App();
             app.InitializeComponent();
             app.Run();

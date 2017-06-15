@@ -30,8 +30,8 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Label Name="DescriptionLabel" Grid.Row="0" Grid.Column="0" Content="Description" ToolTip="Give a description so that you can identify this transaction in the account history"/>
-            <TextBox Text="{Binding Description, Mode=TwoWay}" Name="NameTextBox" Grid.Row="0" Grid.Column="1" Height="20" VerticalAlignment="Top"/>
+            <Label Name="DescriptionLabel" Grid.Row="0" Grid.Column="0" Content="Description"/>
+            <TextBox Text="{Binding Description, Mode=TwoWay}" Name="NameTextBox" Grid.Row="0" Grid.Column="1" Height="20" VerticalAlignment="Top" ToolTip="Give a description so that you can identify this transaction in the account history"/>
             <Label Name="CustomerLabel" Grid.Row="1" Grid.Column="0" Content="Choose customer" VerticalAlignment="Top"/>
             <Label Name="SelectedCustomerLabel" Grid.Row="1" Grid.Column="1" Content="{Binding Customer.FullName}" VerticalAlignment="Top"/>
 

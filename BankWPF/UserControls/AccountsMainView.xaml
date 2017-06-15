@@ -13,6 +13,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -21,15 +22,16 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">Account management</TextBlock>
-        <ListView Grid.Row="1" Grid.ColumnSpan="4" x:Name="AccountsListView" ItemsSource="{Binding Accounts, Mode=OneWay}" SelectedItem="{Binding SelectedAccount}">
-            <ListView.ItemTemplate>
+        <ListBox Grid.Row="1" Grid.ColumnSpan="4" x:Name="AccountsListView" ItemsSource="{Binding Accounts, Mode=OneWay}" SelectedItem="{Binding SelectedAccount}" PreviewMouseDown="AccountsListView_PreviewMouseDown">
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <Button Command="{Binding CreateNewAccountButtonCommand}" Grid.Row="2" Grid.Column="0" Name="CreateNewAccountButton" Content="Create new account"/>
         <Button Command="{Binding ShowAccountHistoryButtonCommand}" Grid.Row="2" Grid.Column="1" Name="ShowAccountHistoryButton" Content="Show account history"/>
         <Button Command="{Binding DeleteAccountButtonCommand}" Grid.Row="2" Grid.Column="3" Name="DeleteAccountButton" Content="Delete account"/>
+        <local:QuickTransactionWidget Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
     </Grid>
 </UserControl>

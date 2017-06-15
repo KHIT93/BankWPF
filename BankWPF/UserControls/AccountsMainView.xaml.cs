@@ -31,5 +31,14 @@ namespace BankWPF.UserControls
             this.DataContext = this.vm;
             Task.Run(() => (this.vm.CollectDataAsync()));
         }
+
+        private void AccountsListView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(this.vm.SelectedAccount != null)
+            {
+                DragDrop.DoDragDrop(this.AccountsListView, this.vm.SelectedAccount.AccountId.ToString(), DragDropEffects.Copy);
+                this.vm.SelectedAccount = null;
+            }
+        }
     }
 }

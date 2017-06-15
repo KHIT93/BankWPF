@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="BankWPF.UserControls.QuickTransactionWidget"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BankWPF.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <TextBlock Text="Perform a quick transaction"/>
+        <TextBlock Text="Please drag the to and from accounts from the list above and type the amount to transfer"/>
+        <WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="From account"/>
+                <TextBox Name="FromAccountTextBox" Text="{Binding FromAccount, Mode=TwoWay}" MinWidth="100" AllowDrop="True"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="To account"/>
+                <TextBox Name="ToAccountTextBox" Text="{Binding ToAccount, Mode=TwoWay}" MinWidth="100" AllowDrop="True"/>
+            </WrapPanel>
+        </WrapPanel>
+        <WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Amount"/>
+                <TextBox Name="AmountTextBox" Text="{Binding Amount, Mode=TwoWay}" MinWidth="100"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Description"/>
+                <TextBox Name="DescriptionTextBox" Text="{Binding Description, Mode=TwoWay}" ToolTip="Type in a description that will show in the transaction for the from account and the to account" MinWidth="100"/>
+            </WrapPanel>
+        </WrapPanel>
+        <Button Name="QuickTransactionSaveButton" Command="{Binding QuickTransactionSaveButtonCommand}" Content="Perform transaction" Width="120"/>
+    </StackPanel>
+</UserControl>

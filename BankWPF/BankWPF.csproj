@@ -78,6 +78,9 @@
     <Compile Include="UserControls\CustomersMainWindow.xaml.cs">
       <DependentUpon>CustomersMainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\QuickTransactionWidget.xaml.cs">
+      <DependentUpon>QuickTransactionWidget.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AccountDetailsViewModel.cs" />
     <Compile Include="ViewModels\AccountMainViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="ViewModels\CustomersMainViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\QuickTransactionViewModel.cs" />
     <Compile Include="ViewModels\ShowCustomerViewModel.cs" />
     <Compile Include="Views\CreateAccountWindow.xaml.cs">
       <DependentUpon>CreateAccountWindow.xaml</DependentUpon>
@@ -120,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\CustomersMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\QuickTransactionWidget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,6 +193,7 @@
     <Content Include="Expose.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <SplashScreen Include="splashscreen.png" />
     <Content Include="watermark.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

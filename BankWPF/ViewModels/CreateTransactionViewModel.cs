@@ -93,7 +93,8 @@ namespace BankWPF.ViewModels
 
         public bool CanSave(object parameter)
         {
-            return (this.Account != null && this.Amount > 0 && String.IsNullOrEmpty(this.Description));
+            return true;
+            //return (this.Account != null && this.Amount != 0 && String.IsNullOrEmpty(this.Description));
         }
 
         public ICollection<Customer> Customers
