@@ -20,6 +20,7 @@
                 <Button Name="ShowAccountsButton" Content="Accounts" Click="ShowAccountsButton_Click"/>
                 <Button Name="ShowCustomersButton" Content="Customers" Click="ShowCustomersButton_Click"/>
                 <Button Name="CreateTransactionButton" Content="Create a new transaction" Click="CreateTransactionButton_Click"/>
+                <Button Name="AddInterestButton" Content="Calculate interests" Click="AddInterestButton_Click"/>
             </StackPanel>
             <StackPanel Name="ContentStackPanel"/>
         </DockPanel>

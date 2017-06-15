@@ -16,7 +16,7 @@ namespace Bank.Data.Services
         private static BankDataService _instance;
         protected User user;
         protected string _bankName;
-        protected IRepository<Account> _accounts = new AccountRepository();
+        protected AccountRepository _accounts = new AccountRepository();
 
         protected IRepository<Customer> _customers = new CustomerRepository();
         protected IRepository<Transaction> _transactions = new TransactionRepository();
@@ -53,11 +53,14 @@ namespace Bank.Data.Services
 
         public string AddInterest()
         {
-            foreach (Account account in this._accounts.GetAll())
-            {
-                account.AddInterest();
-            }
+            this._accounts.AddInterest();
             return "Interest has been added for all accounts";
+        }
+
+        public string AddInterest(Account account)
+        {
+            this._accounts.AddInterest(account);
+            return $"Interest has been added for account with ID {account.AccountId}";
         }
 
         public string CreateAccount(Customer customer, string name, string accountType, double balance = 0)
@@ -154,6 +157,14 @@ namespace Bank.Data.Services
             using (var context = new BankDatabaseContext())
             {
                 this.SetSignedInUser(context.Users.Find(Id));
+            }
+        }
+
+        public User User
+        {
+            get
+            {
+                return this.user;
             }
         }
     }

@@ -1,0 +1,23 @@
+﻿<Window x:Class="BankWPF.Views.CalculateInterestsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankWPF.Views"
+        mc:Ignorable="d"
+        x:Name="CalculateInterests"
+        Title="Calculate interest for accounts" Height="300" Width="300">
+    <StackPanel>
+        <TextBlock Text="What do you want to do?"/>
+        <RadioButton Content="All" Name="CalculateForAllRadioButton" Checked="CalculateForAllRadioButton_Checked"/>
+        <RadioButton Content="Single" Name="CalculateForSingleAccountRadioButton" Checked="CalculateForSingleAccountRadioButton_Checked"/>
+        <ComboBox IsEnabled="{Binding ComboBoxEnabled}" ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccount}" Name="AccountsComboBox">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Name="CalculateInterestsButton" Content="Calculate" Command="{Binding CalculateInterestsButtonCommand}" CommandParameter="{Binding ElementName=CalculateInterests}"/>
+    </StackPanel>
+</Window>

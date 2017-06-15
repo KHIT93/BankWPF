@@ -1,4 +1,5 @@
-﻿using BankWPF.ViewModels;
+﻿using BankWPF.Helpers;
+using BankWPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace BankWPF.Views
             InitializeComponent();
             this.vm = vm;
             this.DataContext = vm;
+        }
+
+        private void AmountTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !Utility.IsTextAllowed(e.Text);
         }
     }
 }

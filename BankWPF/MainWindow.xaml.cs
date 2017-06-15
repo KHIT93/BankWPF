@@ -44,5 +44,10 @@ namespace BankWPF
             this.ContentStackPanel.Children.Clear();
             this.ContentStackPanel.Children.Add(new CustomersMainWindow());
         }
+
+        private void AddInterestButton_Click(object sender, RoutedEventArgs e)
+        {
+            (new CalculateInterestsWindow()).ShowDialog();
+        }
     }
 }

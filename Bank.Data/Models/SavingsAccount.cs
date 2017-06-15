@@ -22,19 +22,19 @@ namespace Bank.Data.Models
             this.Name = name;
             this._balance = balance;
         }
-        public override void AddInterest()
+        public override double AddInterest()
         {
-            if (this._balance < 50000)
+            if (this._balance > 50000 && this._balance < 100000)
             {
-                this._balance *= 1.01;
-            }
-            else if (this._balance > 50000 && this._balance < 100000)
-            {
-                this._balance *= 1.02;
+                return this.Balance * 0.02;
             }
             else if (this._balance > 100000)
             {
-                this.Balance *= 1.03;
+                return this.Balance * 0.03;
+            }
+            else
+            {
+                return this.Balance * 0.01;
             }
         }
 

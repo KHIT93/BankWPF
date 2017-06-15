@@ -43,7 +43,7 @@ namespace Bank.Data.Models
         public virtual Customer Customer { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
 
-        public abstract void AddInterest();
+        public abstract double AddInterest();
         public abstract string AccountType { get; }
 
         public void CalculateBalance()
@@ -55,6 +55,26 @@ namespace Bank.Data.Models
         public virtual bool CanWithdraw()
         {
             return this.Balance > 0;
+        }
+
+        public virtual bool CanWithdraw(double amount)
+        {
+            try
+            {
+                if(amount == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    this.Balance = this.Balance + amount;
+                }
+            }
+            catch (NegativeBalanceException ex)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

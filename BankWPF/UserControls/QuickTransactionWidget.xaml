@@ -12,17 +12,17 @@
         <WrapPanel>
             <WrapPanel>
                 <TextBlock Text="From account"/>
-                <TextBox Name="FromAccountTextBox" Text="{Binding FromAccount, Mode=TwoWay}" MinWidth="100" AllowDrop="True"/>
+                <TextBox Name="FromAccountTextBox" Text="{Binding FromAccount, Mode=TwoWay}" MinWidth="100" AllowDrop="True" PreviewTextInput="CheckForAlphaNumericValues"/>
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="To account"/>
-                <TextBox Name="ToAccountTextBox" Text="{Binding ToAccount, Mode=TwoWay}" MinWidth="100" AllowDrop="True"/>
+                <TextBox Name="ToAccountTextBox" Text="{Binding ToAccount, Mode=TwoWay}" MinWidth="100" AllowDrop="True" PreviewTextInput="CheckForAlphaNumericValues"/>
             </WrapPanel>
         </WrapPanel>
         <WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Amount"/>
-                <TextBox Name="AmountTextBox" Text="{Binding Amount, Mode=TwoWay}" MinWidth="100"/>
+                <TextBox Name="AmountTextBox" Text="{Binding Amount, Mode=TwoWay}" MinWidth="100" PreviewTextInput="CheckForAlphaNumericValues"/>
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Description"/>

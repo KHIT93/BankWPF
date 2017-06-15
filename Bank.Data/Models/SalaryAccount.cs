@@ -22,9 +22,9 @@ namespace Bank.Data.Models
             this.Name = name;
             this._balance = balance;
         }
-        public override void AddInterest()
+        public override double AddInterest()
         {
-            this.Balance *= 1.005;
+            return this.Balance * 0.005;
         }
 
         public override string AccountType

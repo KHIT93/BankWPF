@@ -26,12 +26,9 @@ namespace BankWPF.ViewModels
         public void CollectData()
         {
             ObservableCollection<Customer> collection = new ObservableCollection<Customer>();
-            using (var context = new BankDatabaseContext())
+            foreach (Customer customer in BankDataService.Instance.GetCustomers())
             {
-                foreach (Customer customer in context.Customers.ToList())
-                {
-                    collection.Add(customer);
-                }
+                collection.Add(customer);
             }
             this.Customers = collection;
         }
@@ -41,12 +38,9 @@ namespace BankWPF.ViewModels
             await Task.Run(() =>
             {
                 ObservableCollection<Customer> collection = new ObservableCollection<Customer>();
-                using (var context = new BankDatabaseContext())
+                foreach (Customer customer in BankDataService.Instance.GetCustomers())
                 {
-                    foreach (Customer customer in context.Customers.ToList())
-                    {
-                        collection.Add(customer);
-                    }
+                    collection.Add(customer);
                 }
                 this.Customers = collection;
             });

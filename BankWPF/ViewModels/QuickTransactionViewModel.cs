@@ -1,4 +1,5 @@
-﻿using Bank.Data.Models;
+﻿using Bank.Data.Exceptions;
+using Bank.Data.Models;
 using Bank.Data.Services;
 using BankWPF.Commands;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BankWPF.ViewModels
@@ -29,8 +31,15 @@ namespace BankWPF.ViewModels
         {
             Task.Run(() =>
             {
-                BankDataService.Instance.Transaction(-this.Amount, this.FromAccount, this.Description);
-                BankDataService.Instance.Transaction(this.Amount, this.ToAccount, this.Description);
+                try
+                {
+                    BankDataService.Instance.Transaction(-this.Amount, this.FromAccount, this.Description);
+                    BankDataService.Instance.Transaction(this.Amount, this.ToAccount, this.Description);
+                }
+                catch (NegativeBalanceException ex)
+                {
+                    MessageBox.Show(ex.Message, "Insufficient funds");
+                }
                 this.FromAccount = 0;
                 this.ToAccount = 0;
                 this.Amount = 0;

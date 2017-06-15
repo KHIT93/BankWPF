@@ -15,6 +15,6 @@ namespace Bank.Data.Interfaces
         Customer Customer { get; set; }
         ICollection<Transaction> Transactions { get; set; }
         String AccountType { get; }
-        void AddInterest();
+        double AddInterest();
     }
 }

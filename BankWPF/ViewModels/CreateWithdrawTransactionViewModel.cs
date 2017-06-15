@@ -1,4 +1,5 @@
-﻿using Bank.Data.Models;
+﻿using Bank.Data.Exceptions;
+using Bank.Data.Models;
 using Bank.Data.Services;
 using BankWPF.Commands;
 using System;
@@ -61,8 +62,15 @@ namespace BankWPF.ViewModels
 
         public void SaveWithdraw(object parameter)
         {
-            this.SaveWithdraw();
-            ((Window)parameter).DialogResult = true;
+            try
+            {
+                this.SaveWithdraw();
+                ((Window)parameter).DialogResult = true;
+            }
+            catch (NegativeBalanceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

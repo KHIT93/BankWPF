@@ -72,6 +72,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Helpers\Utility.cs" />
     <Compile Include="UserControls\AccountsMainView.xaml.cs">
       <DependentUpon>AccountsMainView.xaml</DependentUpon>
     </Compile>
@@ -84,6 +85,7 @@
     <Compile Include="ViewModels\AccountDetailsViewModel.cs" />
     <Compile Include="ViewModels\AccountMainViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CalculateInterestsViewModel.cs" />
     <Compile Include="ViewModels\CreateAccountViewModel.cs" />
     <Compile Include="ViewModels\CreateCustomerViewModel.cs" />
     <Compile Include="ViewModels\CreateTransactionViewModel.cs" />
@@ -93,6 +95,9 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\QuickTransactionViewModel.cs" />
     <Compile Include="ViewModels\ShowCustomerViewModel.cs" />
+    <Compile Include="Views\CalculateInterestsWindow.xaml.cs">
+      <DependentUpon>CalculateInterestsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateAccountWindow.xaml.cs">
       <DependentUpon>CreateAccountWindow.xaml</DependentUpon>
     </Compile>
@@ -128,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\QuickTransactionWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CalculateInterestsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

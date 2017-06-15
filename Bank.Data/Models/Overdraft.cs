@@ -45,14 +45,19 @@ namespace Bank.Data.Models
             }
         }
 
-        public override void AddInterest()
+        public override double AddInterest()
         {
-            this._balance *= (this._balance < 0) ? 1.05 : 1.005;
+            return (this._balance < 0) ? this.Balance * 0.05 : this.Balance * 0.005;
         }
 
         public override bool CanWithdraw()
         {
             return true;
+        }
+
+        public override bool CanWithdraw(double amount)
+        {
+            return this.CanWithdraw();
         }
     }
 }

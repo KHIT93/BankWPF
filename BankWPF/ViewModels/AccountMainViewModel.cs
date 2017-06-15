@@ -1,5 +1,4 @@
-﻿using Bank.Data.Context;
-using Bank.Data.Models;
+﻿using Bank.Data.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,12 +33,9 @@ namespace BankWPF.ViewModels
         public void CollectData()
         {
             ObservableCollection<Account> collection = new ObservableCollection<Account>();
-            using (var context = new BankDatabaseContext())
+            foreach (Account account in BankDataService.Instance.GetAccounts())
             {
-                foreach (Account account in context.Accounts.ToList())
-                {
-                    collection.Add(account);
-                }
+                collection.Add(account);
             }
             this.Accounts = collection;
         }
@@ -49,12 +45,9 @@ namespace BankWPF.ViewModels
             await Task.Run(() =>
             {
                 ObservableCollection<Account> collection = new ObservableCollection<Account>();
-                using (var context = new BankDatabaseContext())
+                foreach (Account account in BankDataService.Instance.GetAccounts())
                 {
-                    foreach (Account account in context.Accounts.ToList())
-                    {
-                        collection.Add(account);
-                    }
+                    collection.Add(account);
                 }
                 this.Accounts = collection;
             });

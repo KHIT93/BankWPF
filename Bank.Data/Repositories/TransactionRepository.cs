@@ -1,4 +1,5 @@
 ﻿using Bank.Data.Context;
+using Bank.Data.Exceptions;
 using Bank.Data.Interfaces;
 using Bank.Data.Models;
 using Bank.Data.Services;
@@ -21,8 +22,19 @@ namespace Bank.Data.Repositories
                 User employee = context.Users.Find(user.Id);
                 entity.Account = account;
                 entity.User = employee;
-                context.Transactions.Add(entity);
-                context.SaveChanges();
+                if ((entity.Amount < 0 && account.CanWithdraw(entity.Amount)) || entity.Amount > 0 || entity.Amount == 0)
+                {
+                    context.Transactions.Add(entity);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new NegativeBalanceException(string.Format(
+                            "Warning!\nThe account type for account number {0} does now allow a negative balance.\nThe current balance is {1:c}",
+                            account.AccountId,
+                            account.Balance
+                        ));
+                }
                 return entity;
             }
 

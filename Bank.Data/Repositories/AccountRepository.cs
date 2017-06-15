@@ -1,6 +1,7 @@
 ﻿using Bank.Data.Context;
 using Bank.Data.Interfaces;
 using Bank.Data.Models;
+using Bank.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -144,6 +145,23 @@ namespace Bank.Data.Repositories
                 context.Entry(entity).State = EntityState.Modified;
                 context.SaveChanges();
             }
+        }
+
+        public void AddInterest()
+        {
+            using (var context = new BankDatabaseContext())
+            {
+                foreach (Account entity in context.Accounts.Include("Transactions").ToList())
+                {
+                    BankDataService.Instance.Transaction(entity.AddInterest(), entity.AccountId, "Interest calculation");
+
+                }
+            }
+        }
+
+        public void AddInterest(Account account)
+        {
+            BankDataService.Instance.Transaction(account.AddInterest(), account.AccountId, "Interest calculation");
         }
     }
 }

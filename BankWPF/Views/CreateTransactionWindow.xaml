@@ -39,7 +39,7 @@
             <Label Name="SelectedAccountLabel" Grid.Row="2" Grid.Column="1" Content="{Binding Account.Name}" VerticalAlignment="Top"/>
 
             <Label Name="AmountLabel" Grid.Row="3" Grid.Column="0" Content="Amount" VerticalAlignment="Top"/>
-            <TextBox Name="AmountTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding Amount, Mode=TwoWay}" VerticalAlignment="Top" Height="20"/>
+            <TextBox Name="AmountTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding Amount, Mode=TwoWay}" VerticalAlignment="Top" Height="20" PreviewTextInput="AmountTextBox_PreviewTextInput"/>
         </Grid>
     </DockPanel>
 </Window>

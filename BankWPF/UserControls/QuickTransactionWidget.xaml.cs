@@ -1,4 +1,5 @@
-﻿using BankWPF.ViewModels;
+﻿using BankWPF.Helpers;
+using BankWPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,9 @@ namespace BankWPF.UserControls
             this.DataContext = vm;
         }
 
-        private void FromAccountTextBox_DragOver(object sender, DragEventArgs e)
+        private void CheckForAlphaNumericValues(object sender, TextCompositionEventArgs e)
         {
-
+            e.Handled = !Utility.IsTextAllowed(e.Text);
         }
     }
 }
